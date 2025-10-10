@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Healthy Sex, Healthy Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="../index.html" class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-violet-600">Healthy Sex, Healthy Life</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <!-- Login Header -->
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Admin Login</h2>
+                <p class="text-gray-600">Access the content management system</p>
+            </div>
+
+            <!-- Login Form -->
+   <!-- Login Form -->
+<div class="bg-white rounded-lg shadow-md p-8">
+    <form id="loginForm" class="space-y-6">
+        <!-- Username Field -->
+        <div>
+            <label for="username" class="block text-sm font-medium text-gray-700">
+                Username
+            </label>
+            <div class="mt-1 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-user text-gray-400"></i>
+                </div>
+                <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    required
+                    class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                    placeholder="Enter your username"
+                >
+            </div>
+        </div>
+
+        <!-- Password Field -->
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-700">
+                Password
+            </label>
+            <div class="mt-1 relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-lock text-gray-400"></i>
+                </div>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    required
+                    class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                    placeholder="Enter your password"
+                >
+            </div>
+        </div>
+
+        <!-- Remember Me Checkbox -->
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <input
+                    id="remember_me"
+                    name="remember_me"
+                    type="checkbox"
+                    class="h-4 w-4 text-violet-600 focus:ring-violet-500 border-gray-300 rounded"
+                >
+                <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+                    Remember me
+                </label>
+            </div>
+            <div class="text-sm">
+                <a href="#" class="font-medium text-violet-600 hover:text-violet-500">
+                    Forgot password?
+                </a>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+            type="submit"
+            class="w-full flex justify-center items-center bg-violet-600 text-white px-4 py-3 rounded-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 transition duration-150 ease-in-out font-semibold"
+        >
+            <i class="fas fa-sign-in-alt mr-2"></i>
+            Sign In
+        </button>
+
+        <!-- Error Message -->
+        <div id="error-message" class="hidden">
+            <div class="bg-red-50 border-l-4 border-red-400 p-4">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-circle text-red-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-red-700">
+                            Invalid username or password. Please try again.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+         <!-- Security Notice -->
+            <div class="text-center text-sm text-gray-600">
+                <p>This is a secure area. Please log out when you're done.</p>
+                <p class="mt-1">Having trouble? Contact IT support.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('remember_me').checked;
+
+            // In a real application, this would be an API call
+            // For demo purposes, using a simple check
+            if (username === 'admin' && password === 'admin123') {
+                // Store login state
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('adminUser', username);
+                
+                if (rememberMe) {
+                    localStorage.setItem('rememberAdmin', 'true');
+                }
+
+                // Redirect to admin dashboard
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                // Show error message
+                document.getElementById('error-message').classList.remove('hidden');
+                
+                // Clear password field
+                document.getElementById('password').value = '';
+                
+                // Hide error message after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('error-message').classList.add('hidden');
+                }, 3000);
+            }
+        });
+
+        // Check if user should be remembered
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('rememberAdmin') && sessionStorage.getItem('isLoggedIn')) {
+                window.location.href = 'admin-dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>

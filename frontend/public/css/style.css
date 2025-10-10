@@ -1,0 +1,42 @@
+/* style.css */
+:root {
+    --primary-color: #8B5CF6;
+    --primary-dark: #6D28D9;
+    --primary-light: #EDE9FE;
+    --text-dark: #1F2937;
+    --text-white: #FFFFFF;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.hero-gradient {
+    background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    background-color: rgba(139, 92, 246, 0.1);
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}

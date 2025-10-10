@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Quiz | Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="admin-dashboard.html" class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-violet-600">Quiz Management</h1>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-700">Welcome, <span id="admin-name">Admin</span></span>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors flex items-center"
+                    >
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex h-screen pt-16">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white fixed h-full">
+            <div class="p-4">
+                <nav class="space-y-2">
+                    <a href="admin-dashboard.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <a href="manage-content.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-file-alt mr-2"></i>Manage Content
+                    </a>
+                    <a href="manage-quiz.html" class="block py-2.5 px-4 rounded transition duration-200 bg-violet-600">
+                        <i class="fas fa-question-circle mr-2"></i>Manage Quiz
+                    </a>
+                    <a href="manage-clinics.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-hospital mr-2"></i>Manage Clinics
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-bell mr-2"></i>Notifications
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-cog mr-2"></i>Settings
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 p-8">
+            <!-- Quiz Management Header -->
+            <div class="mb-8 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-gray-800">Quiz Questions Management</h2>
+                <button 
+                    onclick="showAddQuestionModal()"
+                    class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 transition-colors flex items-center"
+                >
+                    <i class="fas fa-plus mr-2"></i>
+                    Add New Question
+                </button>
+            </div>
+
+            <!-- Quiz Statistics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Total Questions -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Questions</p>
+                            <h3 class="text-2xl font-bold text-gray-800">25</h3>
+                        </div>
+                        <div class="bg-violet-100 p-3 rounded-full">
+                            <i class="fas fa-question text-violet-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Completions -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Quiz Completions</p>
+                            <h3 class="text-2xl font-bold text-gray-800">856</h3>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-check-circle text-green-600"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Average Score -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Average Score</p>
+                            <h3 class="text-2xl font-bold text-gray-800">76%</h3>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-chart-line text-blue-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions List -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="mb-4 flex justify-between items-center">
+                    <h3 class="text-lg font-semibold text-gray-800">Quiz Questions</h3>
+                    <div class="flex space-x-2">
+                        <select class="rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500">
+                            <option>All Categories</option>
+                            <option>STI Knowledge</option>
+                            <option>Prevention</option>
+                            <option>Treatment</option>
+                        </select>
+                        <input 
+                            type="text" 
+                            placeholder="Search questions..." 
+                            class="rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500"
+                        >
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Question
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Category
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Difficulty
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Success Rate
+                                </th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- Sample Question Row -->
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-gray-900">Which of the following is NOT a common way STIs are transmitted?</div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-violet-100 text-violet-800">
+                                        STI Knowledge
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Easy
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="text-sm text-gray-900">78%</div>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium">
+                                    <button onclick="editQuestion(1)" class="text-violet-600 hover:text-violet-900 mr-3">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button onclick="deleteQuestion(1)" class="text-red-600 hover:text-red-900">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Add more question rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Question Modal -->
+    <div id="addQuestionModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-semibold text-gray-800">Add New Question</h3>
+                        <button onclick="hideAddQuestionModal()" class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="addQuestionForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Question Text</label>
+                            <textarea 
+                                rows="3" 
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500"
+                                placeholder="Enter your question here..."
+                            ></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Category</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500">
+                                <option>STI Knowledge</option>
+                                <option>Prevention</option>
+                                <option>Treatment</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Difficulty</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500">
+                                <option>Easy</option>
+                                <option>Medium</option>
+                                <option>Hard</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Answer Options</label>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="radio" name="correct_answer" value="0" class="mr-2">
+                                    <input type="text" placeholder="Option 1" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500">
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" name="correct_answer" value="1" class="mr-2">
+                                    <input type="text" placeholder="Option 2" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500">
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" name="correct_answer" value="2" class="mr-2">
+                                    <input type="text" placeholder="Option 3" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500">
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" name="correct_answer" value="3" class="mr-2">
+                                    <input type="text" placeholder="Option 4" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500">
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Explanation</label>
+                            <textarea 
+                                rows="2" 
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500"
+                                placeholder="Explain the correct answer..."
+                            ></textarea>
+                        </div>
+                        <div class="flex justify-end space-x-3">
+                            <button 
+                                type="button" 
+                                onclick="hideAddQuestionModal()" 
+                                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300"
+                            >
+                                Cancel
+                            </button>
+                            <button 
+                                type="submit" 
+                                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700"
+                            >
+                                Save Question
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        window.addEventListener('load', function() {
+            if (!sessionStorage.getItem('isLoggedIn')) {
+                window.location.href = 'login.html';
+            }
+            
+            // Set admin name
+            const adminUser = sessionStorage.getItem('adminUser');
+            if (adminUser) {
+                document.getElementById('admin-name').textContent =document.getElementById('admin-name').textContent = adminUser;
+            }
+        });
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('adminUser');
+            localStorage.removeItem('rememberAdmin');
+            window.location.href = 'login.html';
+        }
+
+        // Modal functions
+        function showAddQuestionModal() {
+            document.getElementById('addQuestionModal').classList.remove('hidden');
+        }
+
+        function hideAddQuestionModal() {
+            document.getElementById('addQuestionModal').classList.add('hidden');
+        }
+
+        // Handle question form submission
+        document.getElementById('addQuestionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically collect all form data and send to backend
+            const formData = new FormData(this);
+            
+            // For demonstration, show success message
+            alert('Question saved successfully!');
+            hideAddQuestionModal();
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Edit question function
+        function editQuestion(questionId) {
+            // In a real application, this would fetch question data and populate the modal
+            showAddQuestionModal();
+            alert(`Editing question ${questionId}`);
+        }
+
+        // Delete question function
+        function deleteQuestion(questionId) {
+            if (confirm('Are you sure you want to delete this question?')) {
+                // In a real application, this would send a delete request to the backend
+                alert(`Question ${questionId} deleted successfully`);
+            }
+        }
+
+        // Search and filter functionality
+        document.querySelector('input[type="text"]').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            // Implement search functionality here
+        });
+
+        document.querySelector('select').addEventListener('change', function(e) {
+            const category = e.target.value;
+            // Implement category filter functionality here
+        });
+    </script>
+</body>
+</html>

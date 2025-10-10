@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexual Health Quiz | Healthy Sex, Healthy Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .form-radio {
+            appearance: none;
+            -webkit-appearance: none;
+            border: 2px solid #8B5CF6;
+            border-radius: 50%;
+            width: 1.2rem;
+            height: 1.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-radio:checked {
+            background-color: #8B5CF6;
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 2px white inset;
+        }
+
+        .form-radio:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+        }
+
+        .option-label {
+            transition: all 0.3s ease;
+        }
+
+        .option-label:hover {
+            transform: translateX(10px);
+            background-color: #EDE9FE;
+        }
+
+        .correct-answer {
+            background-color: #DEF7EC !important;
+            border-color: #059669 !important;
+            color: #059669 !important;
+        }
+
+        .wrong-answer {
+            background-color: #FEE2E2 !important;
+            border-color: #DC2626 !important;
+            color: #DC2626 !important;
+        }
+    </style>
+</head><body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="../index.html" class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-violet-600">Healthy Sex, Healthy Life</h1>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    <a href="../education/sti-information.html" class="text-gray-700 hover:text-violet-600">STI Info</a>
+                    <a href="../education/prevention-methods.html" class="text-gray-700 hover:text-violet-600">Prevention</a>
+                    <a href="symptom-checker.html" class="text-gray-700 hover:text-violet-600">Symptom Checker</a>
+                    <a href="quiz.html" class="text-gray-700 hover:text-violet-600">Quiz</a>
+                    <a href="../resources/clinic-locator.html" class="text-gray-700 hover:text-violet-600">Find Clinic</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-violet-600 mb-4">Test Your Knowledge</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Take this quiz to test your understanding of STIs, prevention, and sexual health.
+                </p>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <!-- Quiz Start Screen -->
+                <div id="quiz-start" class="text-center py-8">
+                    <i class="fas fa-book-open text-violet-600 text-6xl mb-6"></i>
+                    <h2 class="text-2xl font-semibold mb-4">Ready to Test Your Knowledge?</h2>
+                    <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                        This quiz contains 10 questions about STIs and sexual health.
+                        You'll get immediate feedback on your answers and a final score at the end.
+                    </p>
+                    <button 
+                        onclick="startQuiz()"
+                        class="bg-blue-600 text-white px-8 py-4 rounded-md hover:bg-blue-700 transition-colors shadow-md font-semibold text-lg inline-flex items-center"
+                    >
+                        <i class="fas fa-play mr-2"></i>
+                        Start Quiz
+                    </button>
+                </div><!-- Quiz Questions -->
+                <div id="quiz-questions" class="hidden">
+                    <!-- Progress Bar -->
+                    <div class="mb-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold text-violet-600 text-lg">
+                                Question <span id="current-question">1</span>/10
+                            </span>
+                            <span class="text-gray-600 font-semibold">
+                                Score: <span id="score" class="text-violet-600">0</span>
+                            </span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="h-full bg-violet-600 transition-all duration-300 rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question Content -->
+                    <div class="mb-8">
+                        <h3 id="question-text" class="text-xl font-semibold mb-6 text-gray-800"></h3>
+                        <div id="options-container" class="space-y-4"></div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex items-center justify-between mt-8 space-x-4">
+                        <button 
+                            id="prev-button"
+                            onclick="previousQuestion()"
+                            class="bg-gray-600 text-white px-6 py-3 rounded-md hover:bg-gray-700 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center"
+                            disabled
+                        >
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            Previous
+                        </button>
+
+                        <button 
+                            id="submit-answer"
+                            onclick="submitAnswer()"
+                            class="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors shadow-md font-semibold inline-flex items-center"
+                            disabled
+                        >
+                            <i class="fas fa-check mr-2"></i>
+                            Submit Answer
+                        </button>
+
+                        <button 
+                            id="next-button"
+                            onclick="nextQuestion()"
+                            class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center"
+                            disabled
+                        >
+                            Next
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Answer Feedback -->
+                    <div id="feedback" class="hidden mt-6 p-4 rounded-md"></div>
+                </div>
+
+                <!-- Quiz Results -->
+                <div id="quiz-results" class="hidden text-center py-8">
+                    <i class="fas fa-award text-violet-600 text-6xl mb-6"></i>
+                    <h2 class="text-2xl font-semibold mb-4">Quiz Complete!</h2>
+                    <p class="text-gray-600 mb-2">Your Score:</p>
+                    <p class="text-5xl font-bold text-violet-600 mb-8" id="final-score">0/10</p>
+                    <div class="mb-8">
+                        <h3 class="font-semibold mb-2">Knowledge Level:</h3>
+                        <p id="score-message" class="text-gray-600 mb-6"></p>
+                        <div id="certificate" class="bg-violet-50 p-6 rounded-lg max-w-md mx-auto mb-8 hidden">
+                            <h4 class="text-violet-600 font-semibold mb-2">🎉 Achievement Unlocked!</h4>
+                            <p class="text-gray-600">You've demonstrated excellent knowledge of sexual health!</p>
+                        </div>
+                    </div>
+                    <div class="space-x-4">
+                        <button 
+                            onclick="restartQuiz()"
+                            class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors shadow-md inline-flex items-center"
+                        >
+                            <i class="fas fa-redo mr-2"></i>
+                            Try Again
+                        </button>
+                        <button 
+                            onclick="reviewAnswers()"
+                            class="bg-violet-600 text-white px-6 py-3 rounded-md hover:bg-violet-700 transition-colors shadow-md inline-flex items-center"
+                        >
+                            <i class="fas fa-book mr-2"></i>
+                            Review Answers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main><!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../education/sti-information.html" class="hover:text-violet-400">STI Information</a></li>
+                        <li><a href="symptom-checker.html" class="hover:text-violet-400">Symptom Checker</a></li>
+                        <li><a href="../resources/clinic-locator.html" class="hover:text-violet-400">Find a Clinic</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../education/prevention-methods.html" class="hover:text-violet-400">Prevention Methods</a></li>
+                        <li><a href="../education/myth-busters.html" class="hover:text-violet-400">Myth Busters</a></li>
+                        <li><a href="../resources/helplines.html" class="hover:text-violet-400">Helplines</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-phone mr-2"></i>Emergency: 999</li>
+                        <li><i class="fas fa-phone mr-2"></i>Helpline: 0800 724 242</li>
+                        <li><i class="fas fa-envelope mr-2"></i>info@healthysex.org</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
+                    <form id="newsletter-form" class="space-y-4">
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            class="w-full px-4 py-2 rounded-md text-gray-900"
+                            required
+                        >
+                        <button 
+                            type="submit"
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors shadow-md"
+                        >
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2024 Healthy Sex, Healthy Life. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz questions data
+        const quizQuestions = [
+            {
+                question: "Which of the following is NOT a common way STIs are transmitted?",
+                options: [
+                    "Through sharing food or drinks",
+                    "Through unprotected sexual contact",
+                    "Through blood contact",
+                    "From mother to child during childbirth"
+                ],
+                correct: 0,
+                explanation: "STIs are not transmitted through sharing food or drinks. They are primarily transmitted through sexual contact, blood contact, or from mother to child."
+            },
+            {
+                question: "What percentage of STIs show no immediate symptoms?",
+                options: [
+                    "25%",
+                    "50%",
+                    "75%",
+                    "100%"
+                ],
+                correct: 2,
+                explanation: "Approximately 75% of STIs may show no immediate symptoms, which is why regular testing is important."
+            },
+            {
+                question: "How often should sexually active individuals get tested for STIs?",
+                options: [
+                    "Only when symptoms appear",
+                    "Once a year",
+                    "Every 3-6 months",
+                    "Only when changing partners"
+                ],
+                correct: 2,
+                explanation: "Regular testing every 3-6 months is recommended for sexually active individuals, or more frequently if there are risk factors."
+            },
+            {
+                question: "Which of these is an effective method of STI prevention?",
+                options: [
+                    "Using birth control pills",
+                    "Using condoms consistently",
+                    "Washing after sex",
+                    "Taking vitamins"
+                ],
+                correct: 1,
+                explanation: "Consistent condom use is one of the most effective methods for preventing STI transmission."
+            },
+            {
+                question: "What should you do if you think you've been exposed to an STI?",
+                options: [
+                    "Wait to see if symptoms develop",
+                    "Take antibiotics immediately",
+                    "Seek medical attention right away",
+                    "Ask friends for advice"
+                ],
+                correct: 2,
+                explanation: "You should seek medical attention immediately after potential exposure, don't wait for symptoms to appear."
+            }
+        ];let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+        let answeredQuestions = new Set();
+
+        function startQuiz() {
+            document.getElementById('quiz-start').classList.add('hidden');
+            document.getElementById('quiz-questions').classList.remove('hidden');
+            showQuestion(0);
+        }
+
+        function showQuestion(index) {
+            const question = quizQuestions[index];
+            document.getElementById('question-text').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, i) => {
+                const label = document.createElement('label');
+                label.className = 'option-label flex items-center space-x-3 p-4 rounded-md border border-gray-200 cursor-pointer';
+                
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = 'quiz-option';
+                radio.value = i;
+                radio.className = 'form-radio';
+                radio.onclick = () => selectOption(i);
+                
+                if (userAnswers[index] === i) {
+                    radio.checked = true;
+                }
+                
+                const text = document.createElement('span');
+                text.className = 'text-gray-700 flex-1';
+                text.textContent = option;
+                
+                label.appendChild(radio);
+                label.appendChild(text);
+                optionsContainer.appendChild(label);
+            });
+
+            document.getElementById('current-question').textContent = index + 1;
+            document.getElementById('progress-bar').style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
+            
+            // Update button states
+            document.getElementById('prev-button').disabled = index === 0;
+            document.getElementById('next-button').disabled = !answeredQuestions.has(index);
+            document.getElementById('submit-answer').disabled = answeredQuestions.has(index);
+            
+            // Hide feedback
+            const feedback = document.getElementById('feedback');
+            feedback.classList.add('hidden');
+        }
+
+        function selectOption(optionIndex) {
+            if (answeredQuestions.has(currentQuestion)) return;
+
+            userAnswers[currentQuestion] = optionIndex;
+            document.getElementById('submit-answer').disabled = false;
+        }
+
+        function submitAnswer() {
+            if (!answeredQuestions.has(currentQuestion)) {
+                const selectedAnswer = userAnswers[currentQuestion];
+                const correctAnswer = quizQuestions[currentQuestion].correct;
+                
+                if (selectedAnswer === correctAnswer) score++;
+                document.getElementById('score').textContent = score;
+                
+                answeredQuestions.add(currentQuestion);
+                showAnswerFeedback(selectedAnswer === correctAnswer);
+                
+                document.getElementById('submit-answer').disabled = true;
+                document.getElementById('next-button').disabled = false;
+            }
+        }
+
+        function showAnswerFeedback(isCorrect) {
+            const options = document.querySelectorAll('.option-label');
+            const correctAnswer = quizQuestions[currentQuestion].correct;
+            const feedback = document.getElementById('feedback');
+            
+            options.forEach((option, i) => {
+                const radio = option.querySelector('input[type="radio"]');
+                radio.disabled = true;
+                
+                if (i === correctAnswer) {
+                    option.classList.add('correct-answer');
+                } else if (i === userAnswers[currentQuestion] && !isCorrect) {
+                    option.classList.add('wrong-answer');
+                }
+            });
+
+            feedback.classList.remove('hidden');
+            feedback.className = `mt-6 p-4 rounded-md ${isCorrect ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`;
+            feedback.innerHTML = `
+                <p class="font-semibold">${isCorrect ? 'Correct! 🎉' : 'Incorrect'}</p>
+                <p class="mt-2">${quizQuestions[currentQuestion].explanation}</p>
+            `;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-questions').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+            
+            const finalScore = (score / quizQuestions.length) * 100;
+            document.getElementById('final-score').textContent = `${score}/${quizQuestions.length} (${finalScore}%)`;
+            
+            let message = '';
+            if (finalScore >= 90) {
+                message = "Excellent! You have a great understanding of sexual health!";
+                document.getElementById('certificate').classList.remove('hidden');
+            } else if (finalScore >= 70) {
+                message = "Good job! You know your stuff, but there's still room to learn more.";
+            } else if (finalScore >= 50) {
+                message = "Not bad, but consider reviewing the educational materials to improve your knowledge.";
+            } else {
+                message = "Time to brush up on your sexual health knowledge. Visit our educational resources!";
+            }
+            
+            document.getElementById('score-message').textContent = message;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizQuestions.length).fill(null);
+            answeredQuestions = new Set();
+            document.getElementById('score').textContent = '0';
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-questions').classList.remove('hidden');
+            document.getElementById('certificate').classList.add('hidden');
+            showQuestion(0);
+        }
+
+        function reviewAnswers() {
+            alert('Review feature will be added soon!');
+        }
+
+        // Handle newsletter subscription
+        document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing! We'll send updates to ${email}`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

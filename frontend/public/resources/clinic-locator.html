@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Clinic | Healthy Sex, Healthy Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="../index.html" class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-violet-600">Healthy Sex, Healthy Life</h1>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    <a href="../education/sti-information.html" class="text-gray-700 hover:text-violet-600">STI Info</a>
+                    <a href="../education/prevention-methods.html" class="text-gray-700 hover:text-violet-600">Prevention</a>
+                    <a href="../tools/symptom-checker.html" class="text-gray-700 hover:text-violet-600">Symptom Checker</a>
+                    <a href="../tools/quiz.html" class="text-gray-700 hover:text-violet-600">Quiz</a>
+                    <a href="clinic-locator.html" class="text-gray-700 hover:text-violet-600">Find Clinic</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-violet-600 mb-4">Find a Clinic in Nairobi</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Locate STI testing and treatment clinics near you. All listed clinics provide confidential services.
+                </p>
+            </div>
+
+            <!-- Search and Filter Section -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <form id="searchForm" class="space-y-6">
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Area in Nairobi</label>
+                            <select name="area" class="w-full p-2 border rounded-md">
+                                <option value="">All Areas</option>
+                                <option value="cbd">CBD</option>
+                                <option value="westlands">Westlands</option>
+                                <option value="eastlands">Eastlands</option>
+                                <option value="karen">Karen</option>
+                                <option value="kilimani">Kilimani</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Services</label>
+                            <select name="services" class="w-full p-2 border rounded-md">
+                                <option value="">All Services</option>
+                                <option value="testing">STI Testing</option>
+                                <option value="treatment">Treatment</option>
+                                <option value="counseling">Counseling</option>
+                                <option value="prep">PrEP Services</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Operating Hours</label>
+                            <select name="hours" class="w-full p-2 border rounded-md">
+                                <option value="">Any Time</option>
+                                <option value="24-7">24/7 Facilities</option>
+                                <option value="weekend">Weekend Service</option>
+                                <option value="evening">Evening Hours</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-violet-600 text-white px-8 py-3 rounded-md hover:bg-violet-700 flex items-center">
+                            <i class="fas fa-search mr-2"></i>
+                            Find Clinics
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Counter -->
+            <div id="resultsCounter" class="mb-4 text-gray-600">
+                Showing <span id="resultCount">0</span> clinics in Nairobi
+            </div>
+
+            <!-- Clinics List -->
+            <div id="clinicsList" class="grid md:grid-cols-2 gap-6">
+                <!-- Clinic cards will be dynamically inserted here -->
+            </div>
+
+            <!-- Important Information Section -->
+            <div class="bg-violet-50 rounded-lg p-8 mt-12">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-violet-700 mb-4">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Before Your Visit
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                Call ahead to confirm operating hours
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                Bring identification and any medical records
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                Inquire about costs and payment options
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                Ask about waiting times
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-violet-700 mb-4">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            Your Privacy
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                All services are confidential
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                Results are kept private
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                Staff are trained in discretion
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-violet-600 mt-1 mr-2"></i>
+                                Anonymous testing available
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Sample clinic data
+        const clinics = [
+            {
+                id: 1,
+                name: "Nairobi STI Care Center",
+                area: "cbd",
+                address: "Kenyatta Avenue",
+                services: ["testing", "treatment", "counseling", "prep"],
+                hours: "Mon-Fri: 8am-6pm, Sat: 9am-3pm",
+                phone: "+254 20 XXX XXXX",
+                isOpen: true,
+                operatingType: "regular"
+            },
+            {
+                id: 2,
+                name: "Westlands Health Center",
+                area: "westlands",
+                address: "Waiyaki Way",
+                services: ["testing", "treatment", "prep"],
+                hours: "24/7",
+                phone: "+254 20 XXX XXXX",
+                isOpen: true,
+                operatingType: "24-7"
+            },
+            {
+                id: 3,
+                name: "Kilimani Sexual Health Clinic",
+                area: "kilimani",
+                address: "Argwings Kodhek Rd",
+                services: ["testing", "counseling"],
+                hours: "Mon-Sat: 9am-7pm",
+                phone: "+254 20 XXX XXXX",
+                isOpen: false,
+                operatingType: "weekend"
+            },
+            // Add more clinics here
+        ];
+
+        function createClinicCard(clinic) {
+            return `
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-semibold text-violet-600">${clinic.name}</h3>
+                            <p class="text-gray-600">${clinic.area.toUpperCase()} - ${clinic.address}</p>
+                        </div>
+                        <span class="${clinic.isOpen ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} px-2 py-1 rounded-full text-sm">
+                            ${clinic.isOpen ? 'Open Now' : 'Closed'}
+                        </span>
+                    </div>
+                    <div class="mt-4 space-y-2">
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-violet-600 mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-medium">Hours:</p>
+                                <p class="text-gray-600">${clinic.hours}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-violet-600 mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-medium">Contact:</p>
+                                <p class="text-gray-600">${clinic.phone}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-list-check text-violet-600 mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-medium">Services:</p>
+                                <p class="text-gray-600">${clinic.services.join(', ')}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button onclick="bookAppointment(${clinic.id})" class="w-full bg-violet-100 text-violet-600 py-2 rounded hover:bg-violet-200 transition-colors">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterClinics(filters) {
+            return clinics.filter(clinic => {
+                if (filters.area && clinic.area !== filters.area) return false;
+                if (filters.services && !clinic.services.includes(filters.services)) return false;
+                if (filters.hours === '24-7' && clinic.operatingType !== '24-7') return false;
+                if (filters.hours === 'weekend' && clinic.operatingType !== 'weekend') return false;
+                return true;
+            });
+        }
+
+        function displayClinics(filteredClinics) {
+            const clinicsList = document.getElementById('clinicsList');
+            clinicsList.innerHTML = '';
+            
+            filteredClinics.forEach(clinic => {
+                clinicsList.innerHTML += createClinicCard(clinic);
+            });
+            
+            document.getElementById('resultCount').textContent = filteredClinics.length;
+        }
+
+        function bookAppointment(clinicId) {
+            alert(`Booking system coming soon! Please call the clinic directly to schedule an appointment.`);
+        }
+
+        // Initial display
+        displayClinics(clinics);
+
+        // Form submission handling
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const filters = {
+                area: formData.get('area'),
+                services: formData.get('services'),
+                hours: formData.get('hours')
+            };
+            
+            const filteredClinics = filterClinics(filters);
+            displayClinics(filteredClinics);
+        });
+    </script>
+<!-- Footer Section -->
+<footer class="bg-gray-800 text-white mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="../education/sti-information.html" class="hover:text-violet-400">STI Information</a></li>
+                    <li><a href="../tools/symptom-checker.html" class="hover:text-violet-400">Symptom Checker</a></li>
+                    <li><a href="../tools/quiz.html" class="hover:text-violet-400">Knowledge Quiz</a></li>
+                    <li><a href="../resources/clinic-locator.html" class="hover:text-violet-400">Find a Clinic</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="../education/prevention-methods.html" class="hover:text-violet-400">Prevention Methods</a></li>
+                    <li><a href="../education/myth-busters.html" class="hover:text-violet-400">Myth Busters</a></li>
+                    <li><a href="../resources/helplines.html" class="hover:text-violet-400">Helplines</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                <ul class="space-y-2">
+                    <li><i class="fas fa-phone mr-2"></i>Emergency: 999</li>
+                    <li><i class="fas fa-phone mr-2"></i>Helpline: 0800 724 242</li>
+                    <li><i class="fas fa-envelope mr-2"></i>info@healthysex.org</li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
+                <p class="mb-4 text-sm">Subscribe to receive health tips and updates.</p>
+                <form id="newsletter-form" class="space-y-4">
+                    <div>
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            class="w-full px-4 py-2 rounded-md text-gray-900"
+                            required
+                        >
+                    </div>
+                    <button 
+                        type="submit"
+                        class="w-full bg-violet-600 text-white py-2 rounded-md hover:bg-violet-700 transition-colors"
+                    >
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-8 pt-8 border-t border-gray-700">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2024 Healthy Sex, Healthy Life. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-violet-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-violet-400">Terms of Use</a>
+                    <a href="#" class="hover:text-violet-400">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Newsletter Subscription Script -->
+<script>
+    document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        alert(`Thank you for subscribing! We'll send updates to ${email}`);
+        this.reset();
+    });
+</script>
+</body>
+</html>

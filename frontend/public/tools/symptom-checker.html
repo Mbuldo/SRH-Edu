@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker | Healthy Sex, Healthy Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="../index.html" class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-violet-600">Healthy Sex, Healthy Life</h1>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-6">
+                    <a href="../education/sti-information.html" class="text-gray-700 hover:text-violet-600">STI Info</a>
+                    <a href="../education/prevention-methods.html" class="text-gray-700 hover:text-violet-600">Prevention</a>
+                    <a href="symptom-checker.html" class="text-gray-700 hover:text-violet-600">Symptom Checker</a>
+                    <a href="quiz.html" class="text-gray-700 hover:text-violet-600">Quiz</a>
+                    <a href="../resources/clinic-locator.html" class="text-gray-700 hover:text-violet-600">Find Clinic</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-violet-600 mb-4">Symptom Checker</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Check your symptoms and get guidance on when to seek medical attention.
+                    Remember, this tool is for information only and not a substitute for professional medical advice.
+                </p>
+            </div>
+
+            <!-- Symptom Checker Form -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <form id="symptomForm" class="space-y-6">
+                    <!-- Gender Selection -->
+                    <div class="space-y-2">
+                        <label class="block text-gray-700 font-medium">Gender assigned at birth:</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="gender" value="male" class="text-violet-600" required>
+                                <span class="ml-2">Male</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="gender" value="female" class="text-violet-600">
+                                <span class="ml-2">Female</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Common Symptoms Checklist -->
+                    <div class="space-y-2">
+                        <label class="block text-gray-700 font-medium">Common Symptoms (check all that apply):</label>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="discharge" class="text-violet-600">
+                                <span class="ml-2">Unusual discharge</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="burning" class="text-violet-600">
+                                <span class="ml-2">Burning sensation</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="itching" class="text-violet-600">
+                                <span class="ml-2">Itching</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="sores" class="text-violet-600">
+                                <span class="ml-2">Sores or bumps</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="pain" class="text-violet-600">
+                                <span class="ml-2">Pain during urination</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="fever" class="text-violet-600">
+                                <span class="ml-2">Fever</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="swelling" class="text-violet-600">
+                                <span class="ml-2">Swelling</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="pain_sex" class="text-violet-600">
+                                <span class="ml-2">Pain during sex</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="symptoms" value="bleeding" class="text-violet-600">
+                                <span class="ml-2">Unusual bleeding</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Symptom Duration -->
+                    <div class="space-y-2">
+                        <label class="block text-gray-700 font-medium">How long have you had these symptoms?</label>
+                        <select class="w-full p-2 border rounded-md text-gray-700" name="duration" required>
+                            <option value="">Select duration</option>
+                            <option value="less-than-week">Less than a week</option>
+                            <option value="1-2-weeks">1-2 weeks</option>
+                            <option value="2-4-weeks">2-4 weeks</option>
+                            <option value="more-than-month">More than a month</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Information -->
+                    <div class="space-y-2">
+                        <label class="block text-gray-700 font-medium">Additional Information:</label>
+                        <textarea 
+                            class="w-full p-2 border rounded-md text-gray-700" 
+                            name="additional_info"
+                            rows="3"
+                            placeholder="Any other symptoms or concerns..."
+                        ></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors shadow-md flex items-center justify-center">
+    <i class="fas fa-stethoscope mr-2"></i>
+    Check Symptoms
+</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Information Panels -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- When to Seek Immediate Care -->
+                <div class="bg-red-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-red-700 mb-4">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        When to Seek Immediate Care
+                    </h3>
+                    <ul class="space-y-2 text-red-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-2"></i>
+                            Severe abdominal pain
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-2"></i>
+                            High fever (over 39°C/102°F)
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-2"></i>
+                            Severe pain during urination
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-2"></i>
+                            Unusual bleeding
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Important Reminders -->
+                <div class="bg-violet-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-violet-700 mb-4">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        Important Reminders
+                    </h3>
+                    <ul class="space-y-2 text-violet-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-xs mt-2 mr-2"></i>
+                            This tool is not a diagnosis
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-xs mt-2 mr-2"></i>
+                            Regular testing is recommended
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-xs mt-2 mr-2"></i>
+                            Consult healthcare providers
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-xs mt-2 mr-2"></i>
+                            Early treatment is important
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('symptomForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const symptoms = [];
+            formData.getAll('symptoms').forEach(symptom => symptoms.push(symptom));
+            
+            // Analyze symptoms and create response
+            let urgency = 'low';
+            let message = 'Based on your symptoms:\n\n';
+            
+            if (symptoms.length === 0) {
+                message += '- No specific symptoms selected\n';
+                message += '- Regular check-up recommended\n';
+            } else {
+                message += '- You reported ' + symptoms.length + ' symptoms\n';
+                
+                // Check for serious symptoms
+                const seriousSymptoms = ['fever', 'severe_pain', 'bleeding'];
+                const hasSerious = symptoms.some(s => seriousSymptoms.includes(s));
+                
+                if (hasSerious || formData.get('duration') === 'more-than-month') {
+                    urgency = 'high';
+                    message += '- Some symptoms indicate immediate attention needed\n';
+                    message += '- Please seek medical care as soon as possible\n';
+                } else {
+                    message += '- Medical consultation recommended\n';
+                    message += '- Schedule an appointment with a healthcare provider\n';
+                }
+            }
+            
+            // Add general advice
+            message += '\nGeneral Advice:\n';
+            message += '- Avoid sexual activity until evaluated\n';
+            message += '- Keep affected areas clean and dry\n';
+            message += '- Document any changes in symptoms\n\n';
+            
+            if (urgency === 'high') {
+                message += 'IMPORTANT: Your symptoms suggest you should seek immediate medical attention.';
+            } else {
+                message += 'Please consult a healthcare provider for proper diagnosis and treatment.';
+            }
+            
+            alert(message);
+            
+            // Optionally redirect to clinic locator
+            if (confirm('Would you like to find a clinic near you?')) {
+                window.location.href = '../resources/clinic-locator.html';
+            }
+        });
+    </script>
+<!-- Footer Section -->
+<footer class="bg-gray-800 text-white mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="../education/sti-information.html" class="hover:text-violet-400">STI Information</a></li>
+                    <li><a href="../tools/symptom-checker.html" class="hover:text-violet-400">Symptom Checker</a></li>
+                    <li><a href="../tools/quiz.html" class="hover:text-violet-400">Knowledge Quiz</a></li>
+                    <li><a href="../resources/clinic-locator.html" class="hover:text-violet-400">Find a Clinic</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="../education/prevention-methods.html" class="hover:text-violet-400">Prevention Methods</a></li>
+                    <li><a href="../education/myth-busters.html" class="hover:text-violet-400">Myth Busters</a></li>
+                    <li><a href="../resources/helplines.html" class="hover:text-violet-400">Helplines</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                <ul class="space-y-2">
+                    <li><i class="fas fa-phone mr-2"></i>Emergency: 999</li>
+                    <li><i class="fas fa-phone mr-2"></i>Helpline: 0800 724 242</li>
+                    <li><i class="fas fa-envelope mr-2"></i>info@healthysex.org</li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
+                <p class="mb-4 text-sm">Subscribe to receive health tips and updates.</p>
+                <form id="newsletter-form" class="space-y-4">
+                    <div>
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            class="w-full px-4 py-2 rounded-md text-gray-900"
+                            required
+                        >
+                    </div>
+                    <button 
+                        type="submit"
+                        class="w-full bg-violet-600 text-white py-2 rounded-md hover:bg-violet-700 transition-colors"
+                    >
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="mt-8 pt-8 border-t border-gray-700">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2024 Healthy Sex, Healthy Life. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-violet-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-violet-400">Terms of Use</a>
+                    <a href="#" class="hover:text-violet-400">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Newsletter Subscription Script -->
+<script>
+    document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        alert(`Thank you for subscribing! We'll send updates to ${email}`);
+        this.reset();
+    });
+</script>
+</body>
+</html>

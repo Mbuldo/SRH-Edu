@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Healthy Sex, Healthy Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <a href="../index.html" class="flex-shrink-0 flex items-center">
+                        <h1 class="text-xl font-bold text-violet-600">Admin Dashboard</h1>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-700">Welcome, <span id="admin-name">Admin</span></span>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors flex items-center"
+                    >
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex h-screen pt-16">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white fixed h-full">
+            <div class="p-4">
+                <nav class="space-y-2">
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 bg-violet-600 hover:bg-violet-700">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <a href="manage-content.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-file-alt mr-2"></i>Manage Content
+                    </a>
+                    <a href="manage-quiz.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-question-circle mr-2"></i>Manage Quiz
+                    </a>
+                    <a href="manage-clinics.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-hospital mr-2"></i>Manage Clinics
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-bell mr-2"></i>Notifications
+                    </a>
+                    <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                        <i class="fas fa-cog mr-2"></i>Settings
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 p-8">
+            <!-- Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Total Users Card -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Total Users</p>
+                            <h3 class="text-2xl font-bold text-gray-800">2,459</h3>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-users text-blue-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-green-600 text-sm mt-2">
+                        <i class="fas fa-arrow-up"></i> 12% increase
+                    </p>
+                </div>
+
+                <!-- Quiz Completions -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Quiz Completions</p>
+                            <h3 class="text-2xl font-bold text-gray-800">856</h3>
+                        </div>
+                        <div class="bg-violet-100 p-3 rounded-full">
+                            <i class="fas fa-clipboard-check text-violet-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-green-600 text-sm mt-2">
+                        <i class="fas fa-arrow-up"></i> 8% increase
+                    </p>
+                </div>
+
+                <!-- Clinic Referrals -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Clinic Referrals</p>
+                            <h3 class="text-2xl font-bold text-gray-800">342</h3>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-hospital text-green-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-green-600 text-sm mt-2">
+                        <i class="fas fa-arrow-up"></i> 15% increase
+                    </p>
+                </div>
+
+                <!-- Newsletter Subscribers -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Subscribers</p>
+                            <h3 class="text-2xl font-bold text-gray-800">1,247</h3>
+                        </div>
+                        <div class="bg-yellow-100 p-3 rounded-full">
+                            <i class="fas fa-envelope text-yellow-600"></i>
+                        </div>
+                    </div>
+                    <p class="text-green-600 text-sm mt-2">
+                        <i class="fas fa-arrow-up"></i> 5% increase
+                    </p>
+                </div>
+            </div>
+
+            <!-- Recent Activity and Quick Actions -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Recent Activity</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-blue-100 p-2 rounded-full">
+                                <i class="fas fa-edit text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-800">Content updated: STI Information</p>
+                                <p class="text-gray-500 text-sm">2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-green-100 p-2 rounded-full">
+                                <i class="fas fa-plus text-green-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-800">New clinic added: Westlands Health Center</p>
+                                <p class="text-gray-500 text-sm">4 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-violet-100 p-2 rounded-full">
+                                <i class="fas fa-question text-violet-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-800">Quiz questions updated</p>
+                                <p class="text-gray-500 text-sm">Yesterday</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-4 text-violet-600 hover:text-violet-700">
+                        View all activity →
+                    </button>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="p-4 bg-violet-50 rounded-lg text-left hover:bg-violet-100 transition-colors">
+                            <i class="fas fa-plus text-violet-600 mb-2"></i>
+                            <h3 class="font-medium text-gray-800">Add New Content</h3>
+                            <p class="text-sm text-gray-600">Create new educational content</p>
+                        </button>
+                        <button class="p-4 bg-blue-50 rounded-lg text-left hover:bg-blue-100 transition-colors">
+                            <i class="fas fa-hospital text-blue-600 mb-2"></i>
+                            <h3 class="font-medium text-gray-800">Add Clinic</h3>
+                            <p class="text-sm text-gray-600">Add new clinic location</p>
+                        </button>
+                        <button class="p-4 bg-green-50 rounded-lg text-left hover:bg-green-100 transition-colors">
+                            <i class="fas fa-bell text-green-600 mb-2"></i>
+                            <h3 class="font-medium text-gray-800">Send Update</h3>
+                            <p class="text-sm text-gray-600">Notify subscribers</p>
+                        </button>
+                        <button class="p-4 bg-yellow-50 rounded-lg text-left hover:bg-yellow-100 transition-colors">
+                            <i class="fas fa-question-circle text-yellow-600 mb-2"></i>
+                            <h3 class="font-medium text-gray-800">Add Quiz</h3>
+                            <p class="text-sm text-gray-600">Create new quiz questions</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        window.addEventListener('load', function() {
+            if (!sessionStorage.getItem('isLoggedIn')) {
+                window.location.href = 'login.html';
+            }
+            
+            // Set admin name
+            const adminUser = sessionStorage.getItem('adminUser');
+            if (adminUser) {
+                document.getElementById('admin-name').textContent = adminUser;
+            }
+        });
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('adminUser');
+            localStorage.removeItem('rememberAdmin');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

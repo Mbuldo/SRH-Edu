@@ -1,32 +1,15 @@
 # Healthy Sex, Healthy Life
 
-An STI Awareness Web Application providing accurate, stigma-free information about sexual health.
+An STI Awareness Web Application providing accurate, stigma-free information about sexual health among university students.
 
 ## Description
 
 This web application aims to educate users about STIs through:
 - Educational content about STIs
 - Interactive symptom checker
-- Knowledge testing quiz
+- FAQs
 - Clinic locator for healthcare services in Nairobi
 - Admin panel for content management
-
-## Problem Statement
-
-Many people lack access to accurate, stigma-free information about STIs and sexual health. This leads to:
-- Delayed treatment seeking
-- Spread of misinformation
-- Stigma around STIs
-- Poor health outcomes
-
-## Solution
-
-Our web application provides:
-- Accessible, accurate information
-- Anonymous symptom checking
-- Easy clinic finding
-- Interactive learning through quizzes
-- Regular health tips and updates
 
 ## Setup Instructions
 
@@ -125,7 +108,7 @@ healthy-sex-healthy-life/
 ```
 
 ## Contributors
-- Your Name
+- Micah Buldo
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details

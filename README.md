@@ -38,6 +38,9 @@ https://www.loom.com/share/2fd5cf816eaa42cab956bf3afe064183?sid=f9becd7c-c2ea-43
 ![alt text](<Screenshot From 2025-10-13 17-10-11.png>)
 ![alt text](<Screenshot From 2025-10-13 17-11-10.png>)
 
+##Deployment Plan
+The app will be containerized using Docker and deployed on a cloud platform like AWS or Azure for scalability and accessibility. The deployment process will include building Docker images, pushing them to a registry, and provisioning resources with Terraform. Once deployed, users can access the app through a web link and experience all functionalities from education to the symptom checker.
+
 ## Setup Instructions
 
 ### Prerequisites

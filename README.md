@@ -32,6 +32,12 @@ Our web application provides:
 
 https://www.loom.com/share/2fd5cf816eaa42cab956bf3afe064183?sid=f9becd7c-c2ea-43da-99fc-065481a9cf0a
 
+##Screenshots
+
+/home/micah/Pictures/Screenshots/Screenshot From 2025-10-13 17-09-41.png
+/home/micah/Pictures/Screenshots/Screenshot From 2025-10-13 17-10-11.png
+/home/micah/Pictures/Screenshots/Screenshot From 2025-10-13 17-11-10.png
+
 ## Setup Instructions
 
 ### Prerequisites

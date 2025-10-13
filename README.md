@@ -28,6 +28,10 @@ Our web application provides:
 - Interactive learning through quizzes
 - Regular health tips and updates
 
+##Video Demo
+
+https://www.loom.com/share/2fd5cf816eaa42cab956bf3afe064183?sid=f9becd7c-c2ea-43da-99fc-065481a9cf0a
+
 ## Setup Instructions
 
 ### Prerequisites

@@ -1,14 +1,11 @@
-// api.js
 const BASE_URL = 'http://localhost:8000/api';
 
 const api = {
-    // STI Information
     async getSTIInfo() {
         const response = await fetch(`${BASE_URL}/content/`);
         return await response.json();
     },
 
-    // Quiz
     async getQuizQuestions() {
         const response = await fetch(`${BASE_URL}/quiz/questions`);
         return await response.json();
@@ -25,13 +22,11 @@ const api = {
         return await response.json();
     },
 
-    // Clinics
     async getClinics(area = '') {
         const response = await fetch(`${BASE_URL}/clinics/?area=${area}`);
         return await response.json();
     },
 
-    // Symptoms
     async checkSymptoms(symptoms) {
         const response = await fetch(`${BASE_URL}/symptoms/check`, {
             method: 'POST',
@@ -43,7 +38,6 @@ const api = {
         return await response.json();
     },
 
-    // Admin Authentication
     async login(username, password) {
         const formData = new FormData();
         formData.append('username', username);

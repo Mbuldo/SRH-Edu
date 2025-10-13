@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
@@ -29,7 +28,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <main class="min-h-screen">
         <div class="hero-gradient">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
@@ -52,10 +50,8 @@
             </div>
         </div>
 
-        <!-- Features Section -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- STI Information Card -->
                 <div class="bg-white rounded-lg shadow-md p-6 info-card">
                     <div class="text-center mb-4">
                         <i class="fas fa-virus text-4xl text-violet-600"></i>
@@ -69,7 +65,6 @@
                     </a>
                 </div>
 
-                <!-- Prevention Card -->
                 <div class="bg-white rounded-lg shadow-md p-6 info-card">
                     <div class="text-center mb-4">
                         <i class="fas fa-shield-alt text-4xl text-violet-600"></i>
@@ -83,7 +78,6 @@
                     </a>
                 </div>
 
-                <!-- Symptom Checker Card -->
                 <div class="bg-white rounded-lg shadow-md p-6 info-card">
                     <div class="text-center mb-4">
                         <i class="fas fa-stethoscope text-4xl text-violet-600"></i>
@@ -100,7 +94,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -131,7 +124,7 @@
             </div>
         </div>
     </footer>
-<!-- Hidden Admin Access -->
+
 <div class="fixed bottom-0 right-0 p-1">
     <a href="admin/login.html" 
        id="adminLink" 
@@ -143,9 +136,7 @@
     </a>
 </div>
 
-<!-- Add this script before closing body tag -->
 <script>
-    // Listen for key combination (Ctrl + Alt + A)
     document.addEventListener('keydown', function(e) {
         if (e.ctrlKey && e.altKey && e.key === 'a') {
             e.preventDefault();
@@ -153,7 +144,6 @@
         }
     });
 
-    // Make admin link barely visible on hover
     const adminLink = document.getElementById('adminLink');
     adminLink.style.opacity = '0.1';
     adminLink.addEventListener('mouseover', () => adminLink.style.opacity = '0.3');

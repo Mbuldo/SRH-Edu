@@ -4,7 +4,6 @@ from app.routes import auth, content, quiz, clinics, symptoms
 from app.config.database import engine
 from app.models import models
 
-# Create database tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -13,11 +12,9 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS
 origins = [
     "http://localhost",
-    "http://localhost:8080",
-    "*"  # Remove this in production
+    "http://localhost:8080"
 ]
 
 app.add_middleware(
@@ -28,7 +25,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
 app.include_router(content.router, prefix="/api/content", tags=["Content"])
 app.include_router(quiz.router, prefix="/api/quiz", tags=["Quiz"])

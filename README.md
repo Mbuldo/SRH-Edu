@@ -4,12 +4,29 @@ An STI Awareness Web Application providing accurate, stigma-free information abo
 
 ## Description
 
-This web application aims to educate users about STIs through:
-- Educational content about STIs
+This web application aims to educate users about Sexual and Reproductive Health through:
+- Educational content about STIs and Reproductive health
 - Interactive symptom checker
 - FAQs
 - Clinic locator for healthcare services in Nairobi
 - Admin panel for content management
+
+## Problem
+
+Many people lack access to accurate, stigma-free information about STIs and sexual health. This leads to:
+- Delayed treatment seeking
+- Spread of misinformation
+- Stigma around STIs
+- Poor health outcomes
+
+## Solution
+
+Our web application provides:
+- Accessible, accurate information
+- Anonymous symptom checking
+- Easy clinic finding
+- Interactive learning through quizzes
+- Regular health tips and updates
 
 ## Setup Instructions
 
@@ -21,8 +38,8 @@ This web application aims to educate users about STIs through:
 ### Backend Setup
 ```bash
 # Clone the repository
-git clone https://github.com/Mbuldo/Healthy-sex-healthy-life.git
-cd Healthy-sex-healthy-life
+git clone https://github.com/Mbuldo/SRH-Edu
+cd SRH_Edu
 
 # Create and activate virtual environment
 python3 -m venv venv

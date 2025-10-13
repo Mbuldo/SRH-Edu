@@ -26,7 +26,7 @@ class QuizQuestion(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     question = Column(Text)
-    options = Column(String)  # Stored as JSON string
+    options = Column(String)  
     correct_answer = Column(Integer)
     explanation = Column(Text)
 
@@ -39,7 +39,7 @@ class Clinic(Base):
     address = Column(String)
     contact = Column(String)
     operating_hours = Column(String)
-    services = Column(String)  # Stored as JSON string
+    services = Column(String)  
     is_active = Column(Boolean, default=True)
 
 class Symptom(Base):
@@ -48,6 +48,6 @@ class Symptom(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     description = Column(Text)
-    related_conditions = Column(String)  # Stored as JSON string
+    related_conditions = Column(String)  
     severity_level = Column(Integer)
     seek_care = Column(Boolean, default=False)

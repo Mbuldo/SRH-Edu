@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-gray-100">
-    <!-- Top Navigation Bar -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
@@ -33,7 +32,6 @@
     </nav>
 
     <div class="flex h-screen pt-16">
-        <!-- Sidebar -->
         <div class="w-64 bg-gray-800 text-white fixed h-full">
             <div class="p-4">
                 <nav class="space-y-2">
@@ -59,9 +57,7 @@
             </div>
         </div>
 
-        <!-- Main Content -->
         <div class="flex-1 ml-64 p-8">
-            <!-- Content Management Tools -->
             <div class="mb-8 flex justify-between items-center">
                 <h2 class="text-2xl font-bold text-gray-800">Content Management</h2>
                 <button 
@@ -73,9 +69,7 @@
                 </button>
             </div>
 
-            <!-- Content Categories -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <!-- STI Information -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold text-gray-800">STI Information</h3>
@@ -92,7 +86,6 @@
                     </button>
                 </div>
 
-                <!-- Prevention Methods -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold text-gray-800">Prevention Methods</h3>
@@ -109,7 +102,6 @@
                     </button>
                 </div>
 
-                <!-- Myth Busters -->
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg font-semibold text-gray-800">Myth Busters</h3>
@@ -127,7 +119,6 @@
                 </div>
             </div>
 
-            <!-- Content List -->
             <div class="bg-white rounded-lg shadow-md p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Content Updates</h3>
                 <div class="overflow-x-auto">
@@ -176,7 +167,6 @@
                                     </button>
                                 </td>
                             </tr>
-                            <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                 </div>
@@ -184,7 +174,6 @@
         </div>
     </div>
 
-    <!-- Add Content Modal -->
     <div id="addContentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
         <div class="flex items-center justify-center min-h-screen px-4">
             <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl">
@@ -227,20 +216,18 @@
     </div>
 
     <script>
-        // Check if user is logged in
+
         window.addEventListener('load', function() {
             if (!sessionStorage.getItem('isLoggedIn')) {
                 window.location.href = 'login.html';
             }
-            
-            // Set admin name
+
             const adminUser = sessionStorage.getItem('adminUser');
             if (adminUser) {
                 document.getElementById('admin-name').textContent = adminUser;
             }
         });
 
-        // Logout function
         function logout() {
             sessionStorage.removeItem('isLoggedIn');
             sessionStorage.removeItem('adminUser');
@@ -248,7 +235,6 @@
             window.location.href = 'login.html';
         }
 
-        // Modal functions
         function showAddContentModal() {
             document.getElementById('addContentModal').classList.remove('hidden');
         }
@@ -257,17 +243,12 @@
             document.getElementById('addContentModal').classList.add('hidden');
         }
 
-        // Handle content form submission
         document.getElementById('addContentForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Add content submission logic here
             alert('Content saved successfully!');
             hideAddContentModal();
         });
-
-        // Edit content function
         function editContent(type) {
-            // Add edit content logic here
             alert(`Editing ${type} content`);
         }
     </script>

@@ -9,15 +9,13 @@ from datetime import datetime, timedelta
 
 router = APIRouter()
 
-# Security configuration
-SECRET_KEY = "your-secret-key"  # Change this in production
+SECRET_KEY = ""  
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-# Password and token functions
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
@@ -33,7 +31,7 @@ def create_access_token(data: dict):
 
 @router.post("/login", response_model=dict)
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    # Hardcoded admin credentials for demonstration
+    
     if form_data.username == "admin" and form_data.password == "admin123":
         access_token = create_access_token(data={"sub": form_data.username})
         return {

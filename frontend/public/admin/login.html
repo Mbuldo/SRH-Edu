@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
@@ -24,17 +23,13 @@
 
     <main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
-            <!-- Login Header -->
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-gray-900 mb-2">Admin Login</h2>
                 <p class="text-gray-600">Access the content management system</p>
             </div>
 
-            <!-- Login Form -->
-   <!-- Login Form -->
 <div class="bg-white rounded-lg shadow-md p-8">
     <form id="loginForm" class="space-y-6">
-        <!-- Username Field -->
         <div>
             <label for="username" class="block text-sm font-medium text-gray-700">
                 Username
@@ -53,8 +48,6 @@
                 >
             </div>
         </div>
-
-        <!-- Password Field -->
         <div>
             <label for="password" class="block text-sm font-medium text-gray-700">
                 Password
@@ -73,8 +66,6 @@
                 >
             </div>
         </div>
-
-        <!-- Remember Me Checkbox -->
         <div class="flex items-center justify-between">
             <div class="flex items-center">
                 <input
@@ -93,8 +84,6 @@
                 </a>
             </div>
         </div>
-
-        <!-- Submit Button -->
         <button
             type="submit"
             class="w-full flex justify-center items-center bg-violet-600 text-white px-4 py-3 rounded-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 transition duration-150 ease-in-out font-semibold"
@@ -102,8 +91,6 @@
             <i class="fas fa-sign-in-alt mr-2"></i>
             Sign In
         </button>
-
-        <!-- Error Message -->
         <div id="error-message" class="hidden">
             <div class="bg-red-50 border-l-4 border-red-400 p-4">
                 <div class="flex">
@@ -120,7 +107,7 @@
         </div>
     </form>
 </div>
-         <!-- Security Notice -->
+
             <div class="text-center text-sm text-gray-600">
                 <p>This is a secure area. Please log out when you're done.</p>
                 <p class="mt-1">Having trouble? Contact IT support.</p>
@@ -136,34 +123,25 @@
             const password = document.getElementById('password').value;
             const rememberMe = document.getElementById('remember_me').checked;
 
-            // In a real application, this would be an API call
-            // For demo purposes, using a simple check
             if (username === 'admin' && password === 'admin123') {
-                // Store login state
                 sessionStorage.setItem('isLoggedIn', 'true');
                 sessionStorage.setItem('adminUser', username);
                 
                 if (rememberMe) {
                     localStorage.setItem('rememberAdmin', 'true');
                 }
-
-                // Redirect to admin dashboard
                 window.location.href = 'admin-dashboard.html';
             } else {
-                // Show error message
                 document.getElementById('error-message').classList.remove('hidden');
-                
-                // Clear password field
+
                 document.getElementById('password').value = '';
-                
-                // Hide error message after 3 seconds
+
                 setTimeout(() => {
                     document.getElementById('error-message').classList.add('hidden');
                 }, 3000);
             }
         });
 
-        // Check if user should be remembered
         window.addEventListener('load', function() {
             if (localStorage.getItem('rememberAdmin') && sessionStorage.getItem('isLoggedIn')) {
                 window.location.href = 'admin-dashboard.html';

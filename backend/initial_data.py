@@ -6,7 +6,6 @@ import json
 def init_db():
     db = SessionLocal()
     try:
-        # Add STI Information
         sti_data = [
             {
                 "name": "HIV/AIDS",
@@ -35,7 +34,6 @@ def init_db():
             db_sti = STIInformation(**sti)
             db.add(db_sti)
 
-        # Add Quiz Questions
         quiz_data = [
             {
                 "question": "Which of the following is NOT a common way STIs are transmitted?",
@@ -55,7 +53,6 @@ def init_db():
             db_question = QuizQuestion(**question)
             db.add(db_question)
 
-        # Add Clinics
         clinic_data = [
             {
                 "name": "Nairobi STI Care Center",
@@ -81,7 +78,6 @@ def init_db():
             db_clinic = Clinic(**clinic)
             db.add(db_clinic)
 
-        # Add Symptoms
         symptom_data = [
             {
                 "name": "Unusual discharge",

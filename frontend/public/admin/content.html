@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage FAQs & Tips</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <h2>Manage FAQs</h2>
+  <form id="faq-form">
+    <label>Question:</label>
+    <input type="text" name="question" required>
+    <label>Answer:</label>
+    <textarea name="answer" required></textarea>
+    <button type="submit">Add FAQ</button>
+  </form>
+  <div id="faqs-list"></div>
+
+  <h2>Manage Health Tips</h2>
+  <form id="tip-form">
+    <label>Tip:</label>
+    <textarea name="tip" required></textarea>
+    <label>Created By:</label>
+    <input type="text" name="created_by" required>
+    <button type="submit">Add Tip</button>
+  </form>
+  <div id="tips-list"></div>
+
+  <script src="../js/admin_content.js"></script>
+</body>
+</html>

@@ -51,3 +51,17 @@ class Symptom(Base):
     related_conditions = Column(String)  
     severity_level = Column(Integer)
     seek_care = Column(Boolean, default=False)
+
+class FAQ(Base):
+    __tablename__ = "faqs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    question = Column(String, nullable=False)
+    answer = Column(Text, nullable=False)
+
+class HealthTip(Base):
+    __tablename__ = "health_tips"
+
+    id = Column(Integer, primary_key=True, index=True)
+    tip = Column(Text, nullable=False)
+    created_by = Column(String, nullable=False)

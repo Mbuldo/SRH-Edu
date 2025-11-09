@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthy Sex, Healthy Life</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50">
@@ -21,6 +20,7 @@
                     <a href="education/sti-information.html" class="text-gray-700 hover:text-violet-600">STI Info</a>
                     <a href="education/prevention-methods.html" class="text-gray-700 hover:text-violet-600">Prevention</a>
                     <a href="education/consent.html" class="text-gray-700 hover:text-violet-600">Consent</a>
+                    <a href="education/faqs.html" class="text-gray-700 hover:text-violet-600">FAQs</a>
                     <a href="tools/symptom-checker.html" class="text-gray-700 hover:text-violet-600">Symptom Checker</a>
                     <a href="tools/quiz.html" class="text-gray-700 hover:text-violet-600">Quiz</a>
                     <a href="resources/clinic-locator.html" class="text-gray-700 hover:text-violet-600">Find Clinic</a>
@@ -46,6 +46,9 @@
                         <a href="education/consent.html" class="bg-violet-500 text-white px-6 py-3 rounded-md font-medium hover:bg-violet-600">
                             Consent Matters
                         </a>
+                        <a href="education/faqs.html" class="bg-violet-500 text-white px-6 py-3 rounded-md font-medium hover:bg-violet-600">
+                            FAQs
+                        </a>
                         <a href="tools/symptom-checker.html" class="bg-violet-500 text-white px-6 py-3 rounded-md font-medium hover:bg-violet-600">
                             Check Symptoms
                         </a>
@@ -55,7 +58,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="bg-white rounded-lg shadow-md p-6 info-card">
                     <div class="text-center mb-4">
                         <i class="fas fa-virus text-4xl text-violet-600"></i>
@@ -68,7 +71,6 @@
                         Learn More
                     </a>
                 </div>
-
                 <div class="bg-white rounded-lg shadow-md p-6 info-card">
                     <div class="text-center mb-4">
                         <i class="fas fa-shield-alt text-4xl text-violet-600"></i>
@@ -81,7 +83,6 @@
                         Learn Prevention
                     </a>
                 </div>
-
                 <div class="bg-white rounded-lg shadow-md p-6 info-card">
                     <div class="text-center mb-4">
                         <i class="fas fa-hands-helping text-4xl text-violet-600"></i>
@@ -94,7 +95,18 @@
                         Consent Education
                     </a>
                 </div>
-
+                <div class="bg-white rounded-lg shadow-md p-6 info-card">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-question-circle text-4xl text-violet-600"></i>
+                        <h3 class="text-xl font-semibold mt-2">FAQs</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Find answers to frequent questions about sexual health and behavior.
+                    </p>
+                    <a href="education/faqs.html" class="block w-full bg-violet-50 text-violet-600 py-2 text-center rounded hover:bg-violet-100">
+                        Read FAQs
+                    </a>
+                </div>
                 <div class="bg-white rounded-lg shadow-md p-6 info-card">
                     <div class="text-center mb-4">
                         <i class="fas fa-stethoscope text-4xl text-violet-600"></i>
@@ -113,12 +125,13 @@
 
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="education/sti-information.html" class="hover:text-violet-400">STI Information</a></li>
                         <li><a href="education/consent.html" class="hover:text-violet-400">Consent</a></li>
+                        <li><a href="education/faqs.html" class="hover:text-violet-400">FAQs</a></li>
                         <li><a href="tools/symptom-checker.html" class="hover:text-violet-400">Symptom Checker</a></li>
                         <li><a href="resources/clinic-locator.html" class="hover:text-violet-400">Find a Clinic</a></li>
                     </ul>
@@ -142,30 +155,5 @@
             </div>
         </div>
     </footer>
-
-<div class="fixed bottom-0 right-0 p-1">
-    <a href="admin/login.html" 
-       id="adminLink" 
-       class="text-gray-300 hover:text-gray-400 text-xs" 
-       style="font-size: 8px;"
-       accesskey="a" 
-       title="Admin Access (Alt + A)">
-        Admin
-    </a>
-</div>
-
-<script>
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.altKey && e.key === 'a') {
-            e.preventDefault();
-            window.location.href = 'admin/login.html';
-        }
-    });
-
-    const adminLink = document.getElementById('adminLink');
-    adminLink.style.opacity = '0.1';
-    adminLink.addEventListener('mouseover', () => adminLink.style.opacity = '0.3');
-    adminLink.addEventListener('mouseout', () => adminLink.style.opacity = '0.1');
-</script>
 </body>
 </html>

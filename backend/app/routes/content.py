@@ -61,7 +61,7 @@ def delete_sti_info(sti_id: int, db: Session = Depends(get_db)):
     db.commit()
     return {"message": "STI information deleted"}
 
-# Combined FAQ CRUD
+# FAQ CRUD
 @router.post("/faqs/")
 def create_faq(question: str, answer: str, db: Session = Depends(get_db)):
     faq = FAQ(question=question, answer=answer)
@@ -100,7 +100,7 @@ def delete_faq(faq_id: int, db: Session = Depends(get_db)):
     db.commit()
     return {"ok": True}
 
-# Combined HealthTip CRUD
+# HealthTip CRUD
 @router.post("/healthtips/")
 def create_tip(tip: str, created_by: str, db: Session = Depends(get_db)):
     health_tip = HealthTip(tip=tip, created_by=created_by)

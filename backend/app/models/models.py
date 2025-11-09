@@ -4,7 +4,6 @@ from ..config.database import Base
 
 class Admin(Base):
     __tablename__ = "admins"
-
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True, index=True)
     email = Column(String, unique=True, index=True)
@@ -13,7 +12,6 @@ class Admin(Base):
 
 class STIInformation(Base):
     __tablename__ = "sti_information"
-
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     description = Column(Text)
@@ -23,7 +21,6 @@ class STIInformation(Base):
 
 class QuizQuestion(Base):
     __tablename__ = "quiz_questions"
-
     id = Column(Integer, primary_key=True, index=True)
     question = Column(Text)
     options = Column(String)  
@@ -32,7 +29,6 @@ class QuizQuestion(Base):
 
 class Clinic(Base):
     __tablename__ = "clinics"
-
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     area = Column(String)
@@ -44,7 +40,6 @@ class Clinic(Base):
 
 class Symptom(Base):
     __tablename__ = "symptoms"
-
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     description = Column(Text)
@@ -54,14 +49,20 @@ class Symptom(Base):
 
 class FAQ(Base):
     __tablename__ = "faqs"
-
     id = Column(Integer, primary_key=True, index=True)
     question = Column(String, nullable=False)
     answer = Column(Text, nullable=False)
 
 class HealthTip(Base):
     __tablename__ = "health_tips"
-
     id = Column(Integer, primary_key=True, index=True)
     tip = Column(Text, nullable=False)
     created_by = Column(String, nullable=False)
+
+class ContentResource(Base):
+    __tablename__ = "content_resources"
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    body = Column(Text, nullable=False)
+    url = Column(String, nullable=False)
+    category = Column(String, nullable=False)

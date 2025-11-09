@@ -5,12 +5,10 @@ import json
 
 Base.metadata.create_all(bind=engine)
 
+
 def init_db():
     db = SessionLocal()
     try:
-        # existing STI, Quiz, Clinic, Symptom, FAQ population (from earlier script)
-        # ...existing data... (keep unchanged)
-
         resources_data = [
             {
                 "title": "RAINN - What is Consent?",

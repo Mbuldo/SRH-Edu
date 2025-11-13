@@ -1,4 +1,4 @@
-#!/home/micah/Desktop/Capstone/SRH-Edu/venv/bin/python3.13
+#!/home/micah/Desktop/Capstone/SRH-Edu/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

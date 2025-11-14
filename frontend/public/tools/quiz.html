@@ -51,7 +51,6 @@
         }
     </style>
 </head><body class="bg-gray-50">
-    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
@@ -79,10 +78,7 @@
                     Take this quiz to test your understanding of STIs, prevention, and sexual health.
                 </p>
             </div>
-
-            <!-- Quiz Container -->
             <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-                <!-- Quiz Start Screen -->
                 <div id="quiz-start" class="text-center py-8">
                     <i class="fas fa-book-open text-violet-600 text-6xl mb-6"></i>
                     <h2 class="text-2xl font-semibold mb-4">Ready to Test Your Knowledge?</h2>
@@ -97,9 +93,8 @@
                         <i class="fas fa-play mr-2"></i>
                         Start Quiz
                     </button>
-                </div><!-- Quiz Questions -->
+                </div>
                 <div id="quiz-questions" class="hidden">
-                    <!-- Progress Bar -->
                     <div class="mb-8">
                         <div class="flex justify-between items-center mb-2">
                             <span class="font-semibold text-violet-600 text-lg">
@@ -113,14 +108,10 @@
                             <div id="progress-bar" class="h-full bg-violet-600 transition-all duration-300 rounded-full" style="width: 10%"></div>
                         </div>
                     </div>
-
-                    <!-- Question Content -->
                     <div class="mb-8">
                         <h3 id="question-text" class="text-xl font-semibold mb-6 text-gray-800"></h3>
                         <div id="options-container" class="space-y-4"></div>
                     </div>
-
-                    <!-- Navigation Buttons -->
                     <div class="flex items-center justify-between mt-8 space-x-4">
                         <button 
                             id="prev-button"
@@ -152,12 +143,8 @@
                             <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
-
-                    <!-- Answer Feedback -->
                     <div id="feedback" class="hidden mt-6 p-4 rounded-md"></div>
                 </div>
-
-                <!-- Quiz Results -->
                 <div id="quiz-results" class="hidden text-center py-8">
                     <i class="fas fa-award text-violet-600 text-6xl mb-6"></i>
                     <h2 class="text-2xl font-semibold mb-4">Quiz Complete!</h2>
@@ -190,7 +177,7 @@
                 </div>
             </div>
         </div>
-    </main><!-- Footer -->
+    </main>
     <footer class="bg-gray-800 text-white mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -243,7 +230,6 @@
     </footer>
 
     <script>
-        // Quiz questions data
         const quizQuestions = [
             {
                 question: "Which of the following is NOT a common way STIs are transmitted?",
@@ -344,13 +330,11 @@
 
             document.getElementById('current-question').textContent = index + 1;
             document.getElementById('progress-bar').style.width = `${((index + 1) / quizQuestions.length) * 100}%`;
-            
-            // Update button states
+
             document.getElementById('prev-button').disabled = index === 0;
             document.getElementById('next-button').disabled = !answeredQuestions.has(index);
             document.getElementById('submit-answer').disabled = answeredQuestions.has(index);
-            
-            // Hide feedback
+
             const feedback = document.getElementById('feedback');
             feedback.classList.add('hidden');
         }
@@ -456,7 +440,6 @@
             alert('Review feature will be added soon!');
         }
 
-        // Handle newsletter subscription
         document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
@@ -38,11 +37,8 @@
                     Remember, this tool is for information only and not a substitute for professional medical advice.
                 </p>
             </div>
-
-            <!-- Symptom Checker Form -->
             <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
                 <form id="symptomForm" class="space-y-6">
-                    <!-- Gender Selection -->
                     <div class="space-y-2">
                         <label class="block text-gray-700 font-medium">Gender assigned at birth:</label>
                         <div class="flex space-x-4">
@@ -56,8 +52,6 @@
                             </label>
                         </div>
                     </div>
-
-                    <!-- Common Symptoms Checklist -->
                     <div class="space-y-2">
                         <label class="block text-gray-700 font-medium">Common Symptoms (check all that apply):</label>
                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -99,8 +93,6 @@
                             </label>
                         </div>
                     </div>
-
-                    <!-- Symptom Duration -->
                     <div class="space-y-2">
                         <label class="block text-gray-700 font-medium">How long have you had these symptoms?</label>
                         <select class="w-full p-2 border rounded-md text-gray-700" name="duration" required>
@@ -111,8 +103,6 @@
                             <option value="more-than-month">More than a month</option>
                         </select>
                     </div>
-
-                    <!-- Additional Information -->
                     <div class="space-y-2">
                         <label class="block text-gray-700 font-medium">Additional Information:</label>
                         <textarea 
@@ -122,8 +112,6 @@
                             placeholder="Any other symptoms or concerns..."
                         ></textarea>
                     </div>
-
-                    <!-- Submit Button -->
                     <div class="pt-4">
                         <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors shadow-md flex items-center justify-center">
     <i class="fas fa-stethoscope mr-2"></i>
@@ -132,10 +120,7 @@
                     </div>
                 </form>
             </div>
-
-            <!-- Information Panels -->
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- When to Seek Immediate Care -->
                 <div class="bg-red-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold text-red-700 mb-4">
                         <i class="fas fa-exclamation-triangle mr-2"></i>
@@ -160,8 +145,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Important Reminders -->
                 <div class="bg-violet-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold text-violet-700 mb-4">
                         <i class="fas fa-info-circle mr-2"></i>
@@ -193,13 +176,11 @@
     <script>
         document.getElementById('symptomForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Collect form data
+
             const formData = new FormData(this);
             const symptoms = [];
             formData.getAll('symptoms').forEach(symptom => symptoms.push(symptom));
-            
-            // Analyze symptoms and create response
+
             let urgency = 'low';
             let message = 'Based on your symptoms:\n\n';
             
@@ -208,8 +189,7 @@
                 message += '- Regular check-up recommended\n';
             } else {
                 message += '- You reported ' + symptoms.length + ' symptoms\n';
-                
-                // Check for serious symptoms
+
                 const seriousSymptoms = ['fever', 'severe_pain', 'bleeding'];
                 const hasSerious = symptoms.some(s => seriousSymptoms.includes(s));
                 
@@ -222,8 +202,7 @@
                     message += '- Schedule an appointment with a healthcare provider\n';
                 }
             }
-            
-            // Add general advice
+
             message += '\nGeneral Advice:\n';
             message += '- Avoid sexual activity until evaluated\n';
             message += '- Keep affected areas clean and dry\n';
@@ -236,18 +215,15 @@
             }
             
             alert(message);
-            
-            // Optionally redirect to clinic locator
+
             if (confirm('Would you like to find a clinic near you?')) {
                 window.location.href = '../resources/clinic-locator.html';
             }
         });
     </script>
-<!-- Footer Section -->
 <footer class="bg-gray-800 text-white mt-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Quick Links -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                 <ul class="space-y-2">
@@ -257,8 +233,6 @@
                     <li><a href="../resources/clinic-locator.html" class="hover:text-violet-400">Find a Clinic</a></li>
                 </ul>
             </div>
-
-            <!-- Resources -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Resources</h3>
                 <ul class="space-y-2">
@@ -267,8 +241,6 @@
                     <li><a href="../resources/helplines.html" class="hover:text-violet-400">Helplines</a></li>
                 </ul>
             </div>
-
-            <!-- Contact Information -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Contact</h3>
                 <ul class="space-y-2">
@@ -277,8 +249,6 @@
                     <li><i class="fas fa-envelope mr-2"></i>info@healthysex.org</li>
                 </ul>
             </div>
-
-            <!-- Newsletter Signup -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
                 <p class="mb-4 text-sm">Subscribe to receive health tips and updates.</p>
@@ -300,8 +270,6 @@
                 </form>
             </div>
         </div>
-
-        <!-- Bottom Bar -->
         <div class="mt-8 pt-8 border-t border-gray-700">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-sm">&copy; 2024 Healthy Sex, Healthy Life. All rights reserved.</p>
@@ -314,8 +282,6 @@
         </div>
     </div>
 </footer>
-
-<!-- Newsletter Subscription Script -->
 <script>
     document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
         e.preventDefault();

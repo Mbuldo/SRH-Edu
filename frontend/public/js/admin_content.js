@@ -17,8 +17,6 @@ async function loadFaqs() {
   list.innerHTML = faqs.map(faq => `<div><b>${faq.question}</b><br>${faq.answer}</div>`).join('');
 }
 
-// Health Tips
-
 document.getElementById('tip-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const t = this.tip.value;

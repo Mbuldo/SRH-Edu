@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
@@ -37,8 +36,6 @@
                     Locate STI testing and treatment clinics near you. All listed clinics provide confidential services.
                 </p>
             </div>
-
-            <!-- Search and Filter Section -->
             <div class="bg-white rounded-lg shadow-md p-6 mb-8">
                 <form id="searchForm" class="space-y-6">
                     <div class="grid md:grid-cols-3 gap-4">
@@ -81,18 +78,12 @@
                     </div>
                 </form>
             </div>
-
-            <!-- Results Counter -->
             <div id="resultsCounter" class="mb-4 text-gray-600">
                 Showing <span id="resultCount">0</span> clinics in Nairobi
             </div>
-
-            <!-- Clinics List -->
             <div id="clinicsList" class="grid md:grid-cols-2 gap-6">
-                <!-- Clinic cards will be dynamically inserted here -->
             </div>
 
-            <!-- Important Information Section -->
             <div class="bg-violet-50 rounded-lg p-8 mt-12">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
@@ -149,16 +140,15 @@
     </main>
 
     <script>
-        // Sample clinic data
         const clinics = [
             {
                 id: 1,
                 name: "Nairobi STI Care Center",
                 area: "cbd",
-                address: "Kenyatta Avenue",
+                address: "Ground Floor, Daykio Plaza Off Ngong Lane Nairobi",
                 services: ["testing", "treatment", "counseling", "prep"],
                 hours: "Mon-Fri: 8am-6pm, Sat: 9am-3pm",
-                phone: "+254 20 XXX XXXX",
+                phone: "+254 741 669 175",
                 isOpen: true,
                 operatingType: "regular"
             },
@@ -169,22 +159,43 @@
                 address: "Waiyaki Way",
                 services: ["testing", "treatment", "prep"],
                 hours: "24/7",
-                phone: "+254 20 XXX XXXX",
+                phone: "020 4452560",
                 isOpen: true,
-                operatingType: "24-7"
+                operatingType: "regular"
             },
             {
                 id: 3,
-                name: "Kilimani Sexual Health Clinic",
+                name: "Marie Stopes Clinic",
                 area: "kilimani",
-                address: "Argwings Kodhek Rd",
+                address: "Kindaruma Road, Off Ngong Road",
                 services: ["testing", "counseling"],
                 hours: "Mon-Sat: 9am-7pm",
-                phone: "+254 20 XXX XXXX",
+                phone: "+254 793 379 465",
                 isOpen: false,
                 operatingType: "weekend"
             },
-            // Add more clinics here
+            {
+                id: 4,
+                name: "Karen Medical Center",
+                area: "karen",
+                address: "Karen Road, Opposite Karen Shopping Center",
+                services: ["testing", "treatment", "counseling"],
+                hours: "Mon-Fri: 8am-5pm",
+                phone: "+254 711 123 456",
+                isOpen: true,
+                operatingType: "regular"
+            },
+            {
+                id: 5,
+                name: "Eastlands Community Clinic",
+                area: "eastlands",
+                address: "Juja Road, Near Donholm Market",
+                services: ["testing", "treatment"],
+                hours: "Mon-Sun: 10am-8pm",
+                phone: "+254 722 654 321",
+                isOpen: false,
+                operatingType: "regular"
+            }
         ];
 
         function createClinicCard(clinic) {
@@ -256,10 +267,8 @@
             alert(`Booking system coming soon! Please call the clinic directly to schedule an appointment.`);
         }
 
-        // Initial display
         displayClinics(clinics);
 
-        // Form submission handling
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -274,11 +283,9 @@
             displayClinics(filteredClinics);
         });
     </script>
-<!-- Footer Section -->
 <footer class="bg-gray-800 text-white mt-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Quick Links -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                 <ul class="space-y-2">
@@ -288,8 +295,6 @@
                     <li><a href="../resources/clinic-locator.html" class="hover:text-violet-400">Find a Clinic</a></li>
                 </ul>
             </div>
-
-            <!-- Resources -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Resources</h3>
                 <ul class="space-y-2">
@@ -298,8 +303,6 @@
                     <li><a href="../resources/helplines.html" class="hover:text-violet-400">Helplines</a></li>
                 </ul>
             </div>
-
-            <!-- Contact Information -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Contact</h3>
                 <ul class="space-y-2">
@@ -308,8 +311,6 @@
                     <li><i class="fas fa-envelope mr-2"></i>info@healthysex.org</li>
                 </ul>
             </div>
-
-            <!-- Newsletter Signup -->
             <div>
                 <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
                 <p class="mb-4 text-sm">Subscribe to receive health tips and updates.</p>
@@ -331,8 +332,6 @@
                 </form>
             </div>
         </div>
-
-        <!-- Bottom Bar -->
         <div class="mt-8 pt-8 border-t border-gray-700">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-sm">&copy; 2024 Healthy Sex, Healthy Life. All rights reserved.</p>
@@ -345,8 +344,6 @@
         </div>
     </div>
 </footer>
-
-<!-- Newsletter Subscription Script -->
 <script>
     document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
         e.preventDefault();

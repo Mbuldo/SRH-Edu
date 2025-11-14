@@ -1,4 +1,3 @@
-# tests/test_models.py
 from app import models
 
 def test_create_faq_model():

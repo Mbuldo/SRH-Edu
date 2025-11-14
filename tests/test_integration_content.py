@@ -1,4 +1,3 @@
-# tests/test_integration_content.py
 from fastapi.testclient import TestClient
 from backend.main import app
 

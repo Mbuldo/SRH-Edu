@@ -1,4 +1,3 @@
-# tests/test_integration_auth.py
 from fastapi.testclient import TestClient
 from backend.main import app
 
@@ -23,7 +22,6 @@ def test_get_me():
     assert me.status_code == 200
     assert me.json()["username"] == "admin"
 
-# tests/test_integration_quiz.py
 from fastapi.testclient import TestClient
 from backend.main import app
 
@@ -31,10 +29,10 @@ client = TestClient(app)
 
 def test_quiz_crud():
     qdata = {
-        "question": "Capital of France?",
-        "options": ["Paris", "Berlin", "Rome", "London"],
-        "correct_answer": 0,
-        "explanation": "Paris is the capital of France."
+        "question": "Which of these is an effective method of STI prevention?",
+        "options": ["Using birth control pills", "Using condoms consistently", "Washing after sex", "Taking vitamins"],
+        "correct_answer": 1,
+        "explanation": "Using condoms consistently."
     }
     # Create
     c = client.post("/api/quiz/questions", json=qdata)
@@ -57,7 +55,6 @@ def test_quiz_crud():
     assert d.status_code == 200
 
 def test_quiz_submit():
-    # Should be empty if no questions; skip if none
     allq = client.get("/api/quiz/questions").json()
     if not allq:
         return
@@ -66,7 +63,6 @@ def test_quiz_submit():
     assert resp.status_code == 200
     assert "score" in resp.json()
 
-# tests/test_integration_clinics.py
 from fastapi.testclient import TestClient
 from backend.main import app
 
@@ -74,10 +70,9 @@ client = TestClient(app)
 
 def test_clinic_crud():
     clinic_data = {
-        "name": "Test Clinic",
-        "area": "Area51",
-        "address": "123 Test Street",
-        "contact": "999999999",
+        "name": "Westlands Health Center",
+        "address": "WESTLANDS - Waiyaki Way",
+        "contact": "020 4452560",
         "operating_hours": "24/7",
         "services": ["testing", "treatment"],
         "is_active": True
@@ -131,4 +126,3 @@ def test_symptom_crud():
     # Check
     check = client.post("/api/symptoms/check", json=["Headache"])
     assert check.status_code == 200
-    # Delete not present, update not present for deleting, so we only handle what's there.

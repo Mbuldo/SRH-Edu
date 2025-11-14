@@ -1,4 +1,3 @@
-# tests/test_initial_data.py
 import os
 import tempfile
 from sqlalchemy import create_engine

@@ -1,7 +1,7 @@
 
 :root {
-    --primary-color: #8a5cf6;
-    --primary-dark: #6D28D9;
+    --primary-color: #5cd2f6;
+    --primary-dark: #2860d9;
     --primary-light: #EDE9FE;
     --text-dark: #1F2937;
     --text-white: #FFFFFF;
@@ -22,8 +22,8 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.hero-gradient {
-    background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+.hero {
+    background-color: #f5f5f5;
     min-height: 60vh;
     display: flex;
     align-items: center;
